@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Razika Chachoua — Portfolio Professionnel | Développeuse Web & Mobile, Designer Graphique</title>
+<meta name="description" content="Portfolio de Razika Chachoua — Développeuse web & mobile, Designer graphique, Créatrice d'applications. Oran, Algérie. Freelance & Emploi.">
+<meta name="keywords" content="développeuse web, Flutter, Firebase, designer graphique, Oran, Algérie, freelance">
+<meta property="og:title" content="Razika Chachoua — Portfolio Professionnel">
+<meta property="og:description" content="Développeuse Web & Mobile · Designer Graphique · Créatrice d'Applications">
+<meta property="og:type" content="website">
+<meta name="author" content="Razika Chachoua">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#fdf8f5;--bg2:#f9f2ec;--card:#ffffff;
+  --ink:#1c1410;--ink2:#6b5d54;--ink3:#b8a99e;
+  --rose:#c4748a;--rose2:#e8a0b0;--rose3:#f7dde4;--rose4:#fdf0f3;
+  --mauve:#9b7fa0;--sage:#7a9e8a;--blush:#f2c4ce;
+  --gold:#c9a86c;
+  --border:rgba(196,116,138,.13);--border2:rgba(196,116,138,.24);
+  --gg:linear-gradient(135deg,#c4748a,#e8a0b0,#c49abf);
+  --glow:rgba(196,116,138,.1);
+  --r:16px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--ink);overflow-x:hidden;line-height:1.65}
+::selection{background:var(--blush);color:var(--ink)}
+::-webkit-scrollbar{width:3px}::-webkit-scrollbar-track{background:var(--bg)}::-webkit-scrollbar-thumb{background:var(--rose);border-radius:99px}
+
+canvas{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:200;height:64px;display:flex;align-items:center;justify-content:space-between;padding:0 3rem;background:rgba(253,248,245,.92);backdrop-filter:blur(22px);border-bottom:1px solid var(--border)}
+.logo{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:1.35rem;color:var(--rose);text-decoration:none;letter-spacing:.05em;font-style:italic}
+.nl{display:flex;gap:2rem;list-style:none}
+.nl a{font-size:.77rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--ink2);text-decoration:none;transition:color .2s;position:relative;padding-bottom:3px}
+.nl a::after{content:'';position:absolute;left:0;bottom:0;width:100%;height:1px;background:var(--rose);transform:scaleX(0);transition:transform .25s;transform-origin:left}
+.nl a:hover{color:var(--rose)}.nl a:hover::after{transform:scaleX(1)}
+.lw{display:flex;gap:4px}
+.lb{background:none;border:1px solid var(--border2);border-radius:8px;padding:4px 11px;font-size:.72rem;font-weight:500;cursor:pointer;color:var(--ink2);font-family:'DM Sans',sans-serif;transition:all .2s}
+.lb.on,.lb:hover{background:var(--rose);border-color:var(--rose);color:#fff}
+
+/* HERO */
+.hero{min-height:100vh;display:flex;align-items:center;padding:90px 3rem 5rem;position:relative;z-index:1}
+.hi{max-width:1120px;margin:0 auto;width:100%;display:grid;grid-template-columns:1fr 370px;gap:4rem;align-items:center}
+.h-tag{display:inline-flex;align-items:center;gap:8px;font-size:.72rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--rose);border:1px solid var(--border2);background:var(--rose4);padding:6px 16px;border-radius:999px;margin-bottom:1.8rem;animation:fu .7s ease both;box-shadow:0 4px 12px rgba(196,116,138,.12)}
+.h-dot{width:5px;height:5px;background:var(--rose);border-radius:50%;animation:bl 2s infinite}
+@keyframes bl{0%,100%{opacity:1}50%{opacity:.3;transform:scale(1.5)}}
+.hero h1{font-family:'Cormorant Garamond',serif;font-size:clamp(3rem,8vw,5.8rem);font-weight:300;line-height:.95;letter-spacing:-.01em;margin-bottom:.5rem;animation:fu .7s .1s ease both}
+.h1a{display:block;color:var(--ink);font-weight:300}
+.h1b{display:block;font-style:italic;font-weight:600;background:var(--gg);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.h-role{font-size:1rem;color:var(--mauve);font-weight:500;letter-spacing:.04em;margin:.8rem 0 .5rem;animation:fu .7s .15s ease both}
+.h-sub{font-size:.95rem;color:var(--ink2);line-height:1.8;max-width:470px;margin-bottom:2rem;animation:fu .7s .2s ease both}
+.h-btns{display:flex;gap:10px;flex-wrap:wrap;animation:fu .7s .3s ease both}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:12px 26px;border-radius:50px;font-size:.88rem;font-weight:500;text-decoration:none;cursor:pointer;border:none;font-family:'DM Sans',sans-serif;transition:all .25s}
+.btn-r{background:var(--gg);color:#fff;box-shadow:0 4px 20px rgba(196,116,138,.28)}
+.btn-r:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(196,116,138,.38)}
+.btn-o{background:transparent;border:1.5px solid var(--border2);color:var(--ink2)}
+.btn-o:hover{border-color:var(--rose);color:var(--rose);background:var(--rose4);box-shadow:0 4px 16px rgba(196,116,138,.15)}
+.h-stats{display:flex;gap:2.5rem;padding-top:2rem;margin-top:2rem;border-top:1px solid var(--border);animation:fu .7s .4s ease both}
+.sn{font-family:'Cormorant Garamond',serif;font-size:2.2rem;font-weight:600;color:var(--rose)}
+.sl{font-size:.68rem;color:var(--ink3);text-transform:uppercase;letter-spacing:.09em;margin-top:2px}
+
+/* AVATAR */
+.h-right{display:flex;justify-content:center;animation:fu .7s .5s ease both}
+.av{position:relative;width:270px;height:270px}
+.av-out{position:absolute;inset:-18px;border-radius:50%;border:1px solid rgba(196,116,138,.18);animation:spin 22s linear infinite}
+.av-out::before,.av-out::after{content:'';position:absolute;width:8px;height:8px;border-radius:50%;top:0;left:50%;transform:translateX(-50%);background:var(--rose);box-shadow:0 0 8px var(--rose)}
+.av-out::after{top:auto;bottom:0;background:var(--mauve);width:6px;height:6px}
+.av-mid{position:absolute;inset:-6px;border-radius:50%;border:1px dashed rgba(196,116,138,.1);animation:spin 30s linear infinite reverse}
+.av-c{position:absolute;inset:0;border-radius:50%;background:linear-gradient(145deg,#fff,var(--rose3));border:1.5px solid var(--border2);display:flex;align-items:center;justify-content:center;box-shadow:0 18px 55px rgba(196,116,138,.18),inset 0 1px 0 rgba(255,255,255,.9)}
+.av-init{font-family:'Cormorant Garamond',serif;font-size:4.5rem;font-weight:400;font-style:italic;background:var(--gg);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.av-g{position:absolute;inset:0;background:radial-gradient(circle at 55% 35%,rgba(196,116,138,.13),transparent 60%)}
+.fb{position:absolute;background:white;border:1px solid var(--border2);border-radius:14px;padding:7px 13px;font-size:.73rem;font-weight:500;display:flex;align-items:center;gap:7px;color:var(--ink2);white-space:nowrap;animation:flt 3s ease-in-out infinite;box-shadow:0 6px 20px rgba(196,116,138,.1)}
+.fb1{top:-5px;right:-40px;animation-delay:0s}
+.fb2{bottom:20px;left:-55px;animation-delay:1.5s}
+.fb3{top:48%;right:-52px;animation-delay:.9s}
+.petal{position:absolute;font-size:1.4rem;opacity:.35;pointer-events:none;animation:ps 7s ease-in-out infinite}
+.p1{top:-28px;left:18px;font-size:1.8rem;animation-delay:0s}
+.p2{bottom:-8px;right:8px;font-size:1.1rem;animation-delay:2.5s}
+.p3{top:48%;left:-36px;animation-delay:4.5s}
+@keyframes ps{0%,100%{transform:rotate(0deg) scale(1)}50%{transform:rotate(12deg) scale(1.08)}}
+@keyframes flt{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes fu{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.6;transform:scale(1.2)}}
+
+/* SECTIONS */
+section{position:relative;z-index:1}
+.sw{max-width:1120px;margin:0 auto;padding:5rem 3rem}
+.sep{border-top:1px solid var(--border)}
+.ey{display:flex;align-items:center;gap:10px;font-size:.7rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--rose);margin-bottom:.6rem}
+.ey::before{content:'';width:22px;height:1px;background:var(--rose)}
+.st{font-family:'Cormorant Garamond',serif;font-size:clamp(1.9rem,3.8vw,3rem);font-weight:400;font-style:italic;color:var(--ink);line-height:1.1;margin-bottom:2.8rem}
+
+/* ── TIMELINE FORMATION ── */
+.timeline{position:relative;padding-left:2rem}
+.timeline::before{content:'';position:absolute;left:0;top:8px;bottom:8px;width:1px;background:linear-gradient(to bottom,var(--rose),var(--rose3))}
+.tl-item{position:relative;margin-bottom:2rem}
+.tl-item::before{content:'';position:absolute;left:-2.4rem;top:8px;width:10px;height:10px;background:var(--rose);border-radius:50%;border:2px solid white;box-shadow:0 0 0 2px var(--rose)}
+.tl-year{font-size:.75rem;font-weight:600;color:var(--rose);letter-spacing:.1em;text-transform:uppercase;margin-bottom:4px}
+.tl-title{font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:600;color:var(--ink);margin-bottom:3px}
+.tl-sub{font-size:.85rem;color:var(--ink2)}
+.tl-tag{display:inline-block;background:var(--rose4);color:var(--rose);font-size:.7rem;font-weight:500;padding:2px 10px;border-radius:999px;margin-top:6px;border:1px solid var(--border)}
+
+/* ── SKILLS ── */
+.sk-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(185px,1fr));gap:13px}
+.sk{background:white;border:1.5px solid var(--border);border-radius:var(--r);padding:1.4rem;transition:all .3s;cursor:default;position:relative;overflow:hidden}
+.sk::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--gg);opacity:0;transition:opacity .3s}
+.sk:hover{border-color:var(--border2);transform:translateY(-4px);box-shadow:0 12px 36px rgba(196,116,138,.11);background:linear-gradient(135deg,#fff,var(--rose4))}
+.sk:hover::before{opacity:1}
+.sk-em{font-size:1.7rem;margin-bottom:.8rem;display:block}
+.sk h3{font-family:'Cormorant Garamond',serif;font-size:1.05rem;font-weight:600;color:var(--ink);margin-bottom:4px}
+.sk p{font-size:.78rem;color:var(--ink2);line-height:1.5}
+.sk-bar{margin-top:10px;height:2px;background:var(--rose3);border-radius:99px;overflow:hidden}
+.sk-fill{height:100%;border-radius:99px;background:var(--gg);transform:scaleX(0);transform-origin:left;transition:transform 1.2s cubic-bezier(.22,1,.36,1)}
+
+/* ── PROJETS ── */
+.pj-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px}
+.pj{background:white;border:1.5px solid var(--border);border-radius:20px;overflow:hidden;transition:all .3s;position:relative}
+.pj:hover{border-color:var(--border2);transform:translateY(-5px);box-shadow:0 18px 55px rgba(196,116,138,.13);background:linear-gradient(135deg,#fff,var(--rose4))}
+.pj-thumb{height:155px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
+.pj-em{font-size:3.5rem;position:relative;z-index:1}
+.pj-bdg{position:absolute;top:11px;right:11px;z-index:2;background:var(--rose);color:#fff;font-size:.65rem;font-weight:600;padding:3px 10px;border-radius:999px;letter-spacing:.06em;text-transform:uppercase}
+.live{background:var(--sage)}
+.pj-body{padding:1.4rem}
+.pj-tags{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:9px}
+.pt{font-size:.67rem;font-weight:500;letter-spacing:.07em;text-transform:uppercase;color:var(--rose);background:var(--rose4);border:1px solid var(--border);padding:3px 9px;border-radius:999px}
+.pj-body h3{font-family:'Cormorant Garamond',serif;font-size:1.15rem;font-weight:600;color:var(--ink);margin-bottom:5px}
+.pj-body p{font-size:.81rem;color:var(--ink2);line-height:1.65}
+.pj-lnk{display:inline-flex;align-items:center;gap:6px;margin-top:12px;font-size:.79rem;font-weight:500;color:var(--rose);text-decoration:none;transition:gap .2s}
+.pj-lnk:hover{gap:10px}
+
+/* ── LANGUES ── */
+.lang-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:13px}
+.lg-card{background:white;border:1.5px solid var(--border);border-radius:var(--r);padding:1.4rem;text-align:center;transition:all .3s}
+.lg-card:hover{border-color:var(--border2);transform:translateY(-3px);box-shadow:0 10px 30px rgba(196,116,138,.1)}
+.lg-flag{font-size:2.2rem;margin-bottom:.7rem;display:block}
+.lg-name{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:600;color:var(--ink);margin-bottom:4px}
+.lg-level{font-size:.78rem;color:var(--ink2)}
+.lg-dots{display:flex;justify-content:center;gap:5px;margin-top:10px}
+.lg-dot{width:8px;height:8px;border-radius:50%;background:var(--rose3);border:1px solid var(--border2)}
+.lg-dot.fill{background:var(--rose)}
+
+/* ── ABOUT ── */
+.ab-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start}
+.ab-text p{color:var(--ink2);line-height:1.9;margin-bottom:1.1rem;font-size:.97rem}
+.hl{color:var(--rose);font-weight:500}
+.info-list{display:flex;flex-direction:column;gap:9px}
+.ii{display:flex;align-items:center;gap:12px;background:var(--rose4);border:1px solid var(--border);border-radius:12px;padding:11px 14px;transition:all .2s}
+.ii:hover{border-color:var(--border2);background:white;box-shadow:0 4px 14px rgba(196,116,138,.08)}
+.ii-ic{width:34px;height:34px;border-radius:9px;flex-shrink:0;background:white;border:1px solid var(--border2);display:flex;align-items:center;justify-content:center;font-size:.9rem;box-shadow:0 2px 6px rgba(196,116,138,.09)}
+.ii-lb{font-size:.67rem;color:var(--ink3);text-transform:uppercase;letter-spacing:.09em}
+.ii-vl{font-size:.87rem;color:var(--ink);font-weight:500}
+
+/* ── SERVICES / FREELANCE ── */
+.srv-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
+.srv{background:white;border:1.5px solid var(--border);border-radius:var(--r);padding:1.5rem;transition:all .3s;position:relative;overflow:hidden}
+.srv::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:var(--gg);opacity:0;transition:opacity .3s}
+.srv:hover{transform:translateY(-4px);border-color:var(--border2);box-shadow:0 12px 36px rgba(196,116,138,.1)}
+.srv:hover::after{opacity:1}
+.srv-em{font-size:2rem;margin-bottom:.9rem;display:block}
+.srv h3{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:600;color:var(--ink);margin-bottom:6px}
+.srv p{font-size:.8rem;color:var(--ink2);line-height:1.55;margin-bottom:10px}
+.srv-price{font-size:.8rem;font-weight:600;color:var(--rose);background:var(--rose4);border:1px solid var(--border);padding:4px 12px;border-radius:999px;display:inline-block}
+
+/* ── CONTACT ── */
+.ct-box{background:linear-gradient(145deg,#fff5f8,#fdf8f5);border:1.5px solid var(--border2);border-radius:24px;padding:4rem 3rem;text-align:center;position:relative;overflow:hidden}
+.ct-deco{position:absolute;font-size:9rem;opacity:.04;pointer-events:none;top:-20px;right:20px;transform:rotate(12deg)}
+.ct-box h2{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,4vw,3.3rem);font-weight:300;font-style:italic;color:var(--ink);margin-bottom:.8rem}
+.ct-box h2 em{background:var(--gg);-webkit-background-clip:text;-webkit-text-fill-color:transparent;font-style:italic;font-weight:600}
+.ct-sub{color:var(--ink2);margin-bottom:2.5rem;font-size:.97rem}
+.ct-links{display:flex;justify-content:center;gap:10px;flex-wrap:wrap}
+.cl{display:inline-flex;align-items:center;gap:9px;background:white;border:1.5px solid var(--border2);color:var(--ink2);text-decoration:none;padding:12px 22px;border-radius:50px;font-size:.86rem;font-weight:500;transition:all .25s;box-shadow:0 2px 10px rgba(196,116,138,.07)}
+.cl:hover{background:var(--rose);border-color:var(--rose);color:#fff;box-shadow:0 6px 22px rgba(196,116,138,.28)}
+
+footer{text-align:center;padding:1.8rem;font-size:.76rem;color:var(--ink3);border-top:1px solid var(--border);position:relative;z-index:1}
+footer em{color:var(--rose);font-style:normal}
+
+/* MOBILE */
+@media(max-width:900px){.hi{grid-template-columns:1fr}.h-right{display:none}.ab-grid{grid-template-columns:1fr}}
+@media(max-width:600px){nav{padding:0 1.2rem}.nl{display:none}.hero{padding:80px 1.2rem 3rem}.sw{padding:3rem 1.2rem}.ct-box{padding:2.5rem 1.5rem}.h-stats{gap:1.5rem}}
+
+/* LANG */
+.il{display:none}.il.on{display:inline}
+[data-lang]{display:none}[data-lang].on{display:block}
+</style>
+</head>
+<body>
+
+<canvas id="bgc"></canvas>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="logo">Razika ✦</a>
+  <ul class="nl">
+    <li><a href="#formation" data-fr="Formation"    data-en="Education"  data-ar="التكوين">Formation</a></li>
+    <li><a href="#skills"    data-fr="Compétences"  data-en="Skills"     data-ar="المهارات">Compétences</a></li>
+    <li><a href="#projects"  data-fr="Projets"      data-en="Projects"   data-ar="المشاريع">Projets</a></li>
+    <li><a href="#about"     data-fr="À propos"     data-en="About"      data-ar="حول">À propos</a></li>
+    <li><a href="#contact"   data-fr="Contact"      data-en="Contact"    data-ar="تواصل">Contact</a></li>
+  </ul>
+  <div class="lw">
+    <button class="lb on" data-l="fr">FR</button>
+    <button class="lb"    data-l="en">EN</button>
+    <button class="lb"    data-l="ar">ع</button>
+  </div>
+</nav>
+
+<!-- ── HERO ── -->
+<div class="hero">
+  <div class="hi">
+    <div>
+      <div class="h-tag"><span class="h-dot"></span>
+        <span class="il on" data-l="fr">Disponible pour travailler · Oran, Algérie</span>
+        <span class="il"    data-l="en">Available for work · Oran, Algeria</span>
+        <span class="il"    data-l="ar">متاحة للعمل · وهران، الجزائر</span>
+      </div>
+      <h1><span class="h1a">Chachoua</span><span class="h1b">Razika</span></h1>
+      <p class="h-role">
+        <span class="il on" data-l="fr">Développeuse Web & Mobile · Designer Graphique · Créatrice d'Applications</span>
+        <span class="il"    data-l="en">Web & Mobile Developer · Graphic Designer · App Creator</span>
+        <span class="il"    data-l="ar">مطورة ويب وموبايل · مصممة جرافيك · منشئة تطبيقات</span>
+      </p>
+      <p class="h-sub">
+        <span class="il on" data-l="fr">Diplômée en Informatique de l'USTO-MB d'Oran (2026), je crée des expériences numériques modernes — sites web, applications mobiles, identités visuelles. Passionnée par le potentiel digital de l'Algérie.</span>
+        <span class="il"    data-l="en">Computer Science graduate from USTO-MB Oran (2026), I build modern digital experiences — websites, mobile apps, visual identities. Passionate about Algeria's digital potential.</span>
+        <span class="il"    data-l="ar">خريجة علوم الحاسوب من جامعة USTO-MB وهران (2026)، أنشئ تجارب رقمية حديثة — مواقع ويب وتطبيقات موبايل وهويات بصرية. شغوفة بالإمكانات الرقمية للجزائر.</span>
+      </p>
+      <div class="h-btns">
+        <a href="#contact" class="btn btn-r">
+          <span class="il on" data-l="fr">💼 Me recruter</span>
+          <span class="il"    data-l="en">💼 Hire me</span>
+          <span class="il"    data-l="ar">💼 وظفيني</span> ↗
+        </a>
+        <a href="#projects" class="btn btn-o">
+          <span class="il on" data-l="fr">📁 Voir mes projets</span>
+          <span class="il"    data-l="en">📁 View my work</span>
+          <span class="il"    data-l="ar">📁 مشاريعي</span>
+        </a>
+        <a href="javascript:downloadCV()" class="btn btn-o" style="background:rgba(196,116,138,.08);border-color:rgba(196,116,138,.24)">
+          <span class="il on" data-l="fr">📄 Télécharger CV</span>
+          <span class="il"    data-l="en">📄 Download CV</span>
+          <span class="il"    data-l="ar">📄 تحميل السيرة</span>
+        </a>
+      </div>
+      <div class="h-stats">
+        <div><div class="sn">2026</div><div class="sl"><span class="il on" data-l="fr">Diplômée ✓</span><span class="il" data-l="en">Graduate ✓</span><span class="il" data-l="ar">تخرجت ✓</span></div></div>
+        <div><div class="sn">4+</div><div class="sl"><span class="il on" data-l="fr">Projets livrés</span><span class="il" data-l="en">Projects</span><span class="il" data-l="ar">مشاريع</span></div></div>
+        <div><div class="sn">8+</div><div class="sl"><span class="il on" data-l="fr">Compétences tech</span><span class="il" data-l="en">Skills</span><span class="il" data-l="ar">مهارات</span></div></div>
+        <div><div class="sn">3</div><div class="sl"><span class="il on" data-l="fr">Langues</span><span class="il" data-l="en">Languages</span><span class="il" data-l="ar">لغات</span></div></div>
+      </div>
+      <div style="margin-top:2.5rem;display:flex;gap:1rem;flex-wrap:wrap;align-items:center">
+        <div style="background:var(--rose4);border:1px solid var(--border);border-radius:12px;padding:10px 16px;font-size:.78rem;font-weight:500;color:var(--rose);display:flex;align-items:center;gap:8px">
+          <span style="display:inline-flex;align-items:center;justify-content:center;width:6px;height:6px;border-radius:50%;background:var(--sage);animation:pulse 2s infinite"></span>
+          <span class="il on" data-l="fr">Disponible pour travailler</span><span class="il" data-l="en">Available to work</span><span class="il" data-l="ar">متاحة للعمل</span>
+        </div>
+        <div style="background:var(--rose4);border:1px solid var(--border);border-radius:12px;padding:10px 16px;font-size:.78rem;font-weight:500;color:var(--rose)">
+          ⚡ <span class="il on" data-l="fr">Réponse en <24h</span><span class="il" data-l="en">Reply in <24h</span><span class="il" data-l="ar">رد في<24 ساعة</span>
+        </div>
+      </div>
+    </div>
+    <div class="h-right">
+      <div class="av">
+        <span class="petal p1">🌸</span><span class="petal p2">✿</span><span class="petal p3">🌺</span>
+        <div class="av-out"></div>
+        <div class="av-mid"></div>
+        <div class="av-c"><div class="av-g"></div><div class="av-init">RC</div></div>
+        <div class="fb fb1">💻 Flutter · Firebase</div>
+        <div class="fb fb2">🎨 Photoshop · Design</div>
+        <div class="fb fb3">🌐 PsyConnect</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── FORMATION ── -->
+<section id="formation" class="sep">
+  <div class="sw">
+    <div class="ey"><span class="il on" data-l="fr">Parcours académique</span><span class="il" data-l="en">Academic path</span><span class="il" data-l="ar">المسار الأكاديمي</span></div>
+    <h2 class="st"><span class="il on" data-l="fr">Formation</span><span class="il" data-l="en">Education</span><span class="il" data-l="ar">التكوين</span></h2>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start">
+      <div class="timeline">
+        <div class="tl-item">
+          <div class="tl-year">2021 — 2026</div>
+          <div class="tl-title"><span class="il on" data-l="fr">Licence en Informatique</span><span class="il" data-l="en">Bachelor in Computer Science</span><span class="il" data-l="ar">ليسانس في علوم الحاسوب</span></div>
+          <div class="tl-sub"><span class="il on" data-l="fr">Ingénierie des Systèmes d'Information et de Logiciels</span><span class="il" data-l="en">Information Systems & Software Engineering</span><span class="il" data-l="ar">هندسة أنظمة المعلومات والبرمجيات</span></div>
+          <div class="tl-sub" style="margin-top:3px">🎓 USTO-MB — Université des Sciences et de la Technologie, Oran</div>
+          <span class="tl-tag">Mention obtenue · 2026</span>
+        </div>
+        <div class="tl-item">
+          <div class="tl-year">2021</div>
+          <div class="tl-title"><span class="il on" data-l="fr">Baccalauréat Scientifique</span><span class="il" data-l="en">Scientific Baccalaureate</span><span class="il" data-l="ar">بكالوريا علمية</span></div>
+          <div class="tl-sub">Oran, Algérie</div>
+          <span class="tl-tag"><span class="il on" data-l="fr">Filière Sciences</span><span class="il" data-l="en">Science track</span><span class="il" data-l="ar">شعبة العلوم</span></span>
+        </div>
+      </div>
+      <div>
+        <div style="background:white;border:1.5px solid var(--border);border-radius:var(--r);padding:1.5rem;margin-bottom:13px">
+          <div style="font-size:.7rem;font-weight:500;color:var(--rose);text-transform:uppercase;letter-spacing:.1em;margin-bottom:8px"><span class="il on" data-l="fr">Expérience professionnelle</span><span class="il" data-l="en">Work experience</span><span class="il" data-l="ar">الخبرة المهنية</span></div>
+          <div style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:600;color:var(--ink);margin-bottom:4px"><span class="il on" data-l="fr">Stage de formation</span><span class="il" data-l="en">Training internship</span><span class="il" data-l="ar">تدريب مهني</span></div>
+          <div style="font-size:.83rem;color:var(--ink2)"><span class="il on" data-l="fr">Vente de médicaments pharmaceutiques</span><span class="il" data-l="en">Pharmaceutical sales</span><span class="il" data-l="ar">بيع الأدوية الصيدلانية</span></div>
+          <div style="font-size:.78rem;color:var(--ink3);margin-top:4px">Oran, Algérie</div>
+        </div>
+        <div style="background:var(--rose4);border:1px solid var(--border);border-radius:var(--r);padding:1.2rem">
+          <div style="font-size:.75rem;font-weight:500;color:var(--rose);margin-bottom:8px;text-transform:uppercase;letter-spacing:.09em">🌸 <span class="il on" data-l="fr">En cours d'apprentissage</span><span class="il" data-l="en">Currently learning</span><span class="il" data-l="ar">أتعلم حالياً</span></div>
+          <div style="display:flex;flex-wrap:wrap;gap:6px">
+            <span style="background:white;border:1px solid var(--border2);color:var(--ink2);font-size:.75rem;padding:3px 10px;border-radius:999px">Flutter</span>
+            <span style="background:white;border:1px solid var(--border2);color:var(--ink2);font-size:.75rem;padding:3px 10px;border-radius:999px">Firebase</span>
+            <span style="background:white;border:1px solid var(--border2);color:var(--ink2);font-size:.75rem;padding:3px 10px;border-radius:999px">React.js</span>
+            <span style="background:white;border:1px solid var(--border2);color:var(--ink2);font-size:.75rem;padding:3px 10px;border-radius:999px">UI/UX Design</span>
+            <span style="background:white;border:1px solid var(--border2);color:var(--ink2);font-size:.75rem;padding:3px 10px;border-radius:999px">Node.js</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── COMPÉTENCES ── -->
+<section id="skills" class="sep">
+  <div class="sw">
+    <div class="ey"><span class="il on" data-l="fr">Ce que je maîtrise</span><span class="il" data-l="en">What I master</span><span class="il" data-l="ar">ما أتقنه</span></div>
+    <h2 class="st"><span class="il on" data-l="fr">Compétences techniques</span><span class="il" data-l="en">Technical skills</span><span class="il" data-l="ar">المهارات التقنية</span></h2>
+    <div class="sk-grid">
+      <div class="sk"><span class="sk-em">💻</span><h3><span class="il on" data-l="fr">Développement web</span><span class="il" data-l="en">Web Development</span><span class="il" data-l="ar">تطوير ويب</span></h3><p>HTML · CSS · JavaScript · Flutter Web</p><div class="sk-bar"><div class="sk-fill" data-w="75"></div></div></div>
+      <div class="sk"><span class="sk-em">📱</span><h3><span class="il on" data-l="fr">Apps mobiles (Android)</span><span class="il" data-l="en">Mobile Apps (Android)</span><span class="il" data-l="ar">تطبيقات Android</span></h3><p>Flutter · Dart · Firebase · APK</p><div class="sk-bar"><div class="sk-fill" data-w="68"></div></div></div>
+      <div class="sk"><span class="sk-em">🗄️</span><h3><span class="il on" data-l="fr">Base de données & analyse</span><span class="il" data-l="en">Databases & Analysis</span><span class="il" data-l="ar">قواعد البيانات</span></h3><p>SQL · Firebase · UML · Merise · POO</p><div class="sk-bar"><div class="sk-fill" data-w="80"></div></div></div>
+      <div class="sk"><span class="sk-em">⚙️</span><h3><span class="il on" data-l="fr">Programmation</span><span class="il" data-l="en">Programming</span><span class="il" data-l="ar">البرمجة</span></h3><p>Langage C · Orienté Objet · Algorithmique</p><div class="sk-bar"><div class="sk-fill" data-w="72"></div></div></div>
+      <div class="sk"><span class="sk-em">🎨</span><h3><span class="il on" data-l="fr">Design graphique</span><span class="il" data-l="en">Graphic Design</span><span class="il" data-l="ar">التصميم الجرافيكي</span></h3><p>Photoshop · Logos · Affiches · Identité visuelle</p><div class="sk-bar"><div class="sk-fill" data-w="85"></div></div></div>
+      <div class="sk"><span class="sk-em">🎬</span><h3><span class="il on" data-l="fr">Montage vidéo</span><span class="il" data-l="en">Video Editing</span><span class="il" data-l="ar">المونتاج</span></h3><p>Clipchamp · Reels Instagram · Publicités</p><div class="sk-bar"><div class="sk-fill" data-w="80"></div></div></div>
+      <div class="sk"><span class="sk-em">📊</span><h3><span class="il on" data-l="fr">Bureautique</span><span class="il" data-l="en">Office Suite</span><span class="il" data-l="ar">برامج مكتبية</span></h3><p>Word · Excel · PowerPoint · Rapports</p><div class="sk-bar"><div class="sk-fill" data-w="90"></div></div></div>
+      <div class="sk"><span class="sk-em">🔧</span><h3><span class="il on" data-l="fr">Support informatique</span><span class="il" data-l="en">IT Support</span><span class="il" data-l="ar">دعم تقني</span></h3><p><span class="il on" data-l="fr">Résolution de problèmes · Maintenance · Dépannage</span><span class="il" data-l="en">Problem solving · Maintenance · Troubleshooting</span><span class="il" data-l="ar">حل المشكلات · صيانة · استكشاف الأخطاء</span></p><div class="sk-bar"><div class="sk-fill" data-w="78"></div></div></div>
+    </div>
+
+    <!-- Langues -->
+    <div style="margin-top:3rem">
+      <div class="ey" style="margin-bottom:.6rem"><span class="il on" data-l="fr">Langues parlées</span><span class="il" data-l="en">Languages</span><span class="il" data-l="ar">اللغات المتحدثة</span></div>
+      <div class="lang-grid">
+        <div class="lg-card">
+          <span class="lg-flag">🇩🇿</span>
+          <div class="lg-name"><span class="il on" data-l="fr">Arabe</span><span class="il" data-l="en">Arabic</span><span class="il" data-l="ar">العربية</span></div>
+          <div class="lg-level"><span class="il on" data-l="fr">Langue maternelle</span><span class="il" data-l="en">Native language</span><span class="il" data-l="ar">اللغة الأم</span></div>
+          <div class="lg-dots"><div class="lg-dot fill"></div><div class="lg-dot fill"></div><div class="lg-dot fill"></div><div class="lg-dot fill"></div><div class="lg-dot fill"></div></div>
+        </div>
+        <div class="lg-card">
+          <span class="lg-flag">🇫🇷</span>
+          <div class="lg-name">Français</div>
+          <div class="lg-level"><span class="il on" data-l="fr">Parlé, lu et écrit</span><span class="il" data-l="en">Spoken, read and written</span><span class="il" data-l="ar">محادثة وقراءة وكتابة</span></div>
+          <div class="lg-dots"><div class="lg-dot fill"></div><div class="lg-dot fill"></div><div class="lg-dot fill"></div><div class="lg-dot fill"></div><div class="lg-dot"></div></div>
+        </div>
+        <div class="lg-card">
+          <span class="lg-flag">🇬🇧</span>
+          <div class="lg-name">English</div>
+          <div class="lg-level"><span class="il on" data-l="fr">Prononciation & écriture</span><span class="il" data-l="en">Pronunciation & writing</span><span class="il" data-l="ar">نطق وكتابة</span></div>
+          <div class="lg-dots"><div class="lg-dot fill"></div><div class="lg-dot fill"></div><div class="lg-dot fill"></div><div class="lg-dot"></div><div class="lg-dot"></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── PROJETS ── -->
+<section id="projects" class="sep">
+  <div class="sw">
+    <div class="ey"><span class="il on" data-l="fr">Ce que j'ai créé</span><span class="il" data-l="en">What I've built</span><span class="il" data-l="ar">ما أنشأته</span></div>
+    <h2 class="st"><span class="il on" data-l="fr">Mes projets</span><span class="il" data-l="en">My projects</span><span class="il" data-l="ar">مشاريعي</span></h2>
+    <div class="pj-grid">
+      <div class="pj">
+        <div class="pj-bdg live">🌐 Live</div>
+        <div class="pj-thumb" style="background:linear-gradient(135deg,#ede8f5,#ddd0f0)"><div class="pj-em">🧠</div></div>
+        <div class="pj-body">
+          <div class="pj-tags"><span class="pt">Blog Web</span><span class="pt">Psychologie</span><span class="pt">Contenu</span></div>
+          <h3>PsyConnect</h3>
+          <p><span class="il on" data-l="fr">Site web dédié à la psychologie et au bien-être mental. Articles éducatifs, ressources et guides pour accompagner les lecteurs dans leur développement personnel.</span><span class="il" data-l="en">Website dedicated to psychology and mental well-being. Educational articles and resources to support readers' personal development.</span><span class="il" data-l="ar">موقع ويب مخصص لعلم النفس والصحة النفسية. مقالات تعليمية وموارد لمساعدة القراء في تطويرهم الشخصي.</span></p>
+          <a href="http://psyconnect.lovestoblog.com" target="_blank" class="pj-lnk">
+            <span class="il on" data-l="fr">Visiter le site</span><span class="il" data-l="en">Visit site</span><span class="il" data-l="ar">زيارة الموقع</span> →
+          </a>
+        </div>
+      </div>
+      <div class="pj">
+        <div class="pj-bdg" style="background:var(--mauve)">⚙️ En cours</div>
+        <div class="pj-thumb" style="background:linear-gradient(135deg,#fde8d8,#f5d0b8)"><div class="pj-em">🛒</div></div>
+        <div class="pj-body">
+          <div class="pj-tags"><span class="pt">Flutter</span><span class="pt">Firebase</span><span class="pt">E-commerce</span><span class="pt">Algérie</span></div>
+          <h3>SouqDZ</h3>
+          <p><span class="il on" data-l="fr">Marketplace multi-vendeurs 100% algérienne. Paiement via Baridimob, CCP, cash à la livraison. Intégration Yalidine & Zr Express pour la livraison locale.</span><span class="il" data-l="en">100% Algerian multi-vendor marketplace. Payment via Baridimob, CCP, cash on delivery. Yalidine & Zr Express integration for local delivery.</span><span class="il" data-l="ar">منصة تجارة إلكترونية جزائرية 100٪. دفع عبر Baridimob وCCP ونقداً. تكامل مع Yalidine وZr Express للتوصيل المحلي.</span></p>
+        </div>
+      </div>
+      <div class="pj">
+        <div class="pj-thumb" style="background:linear-gradient(135deg,#fde4ec,#f8cedc)"><div class="pj-em">🎨</div></div>
+        <div class="pj-body">
+          <div class="pj-tags"><span class="pt">Photoshop</span><span class="pt">Design</span><span class="pt">Branding</span></div>
+          <h3><span class="il on" data-l="fr">Identités visuelles</span><span class="il" data-l="en">Visual Identities</span><span class="il" data-l="ar">هويات بصرية</span></h3>
+          <p><span class="il on" data-l="fr">Conception de logos, affiches, flyers et supports visuels pour entreprises, événements et particuliers à Oran.</span><span class="il" data-l="en">Logo design, posters, flyers and visual assets for businesses, events and individuals in Oran.</span><span class="il" data-l="ar">تصميم شعارات وملصقات وفلايرات ومواد مرئية للشركات والفعاليات والأفراد في وهران.</span></p>
+        </div>
+      </div>
+      <div class="pj">
+        <div class="pj-thumb" style="background:linear-gradient(135deg,#e8f4e8,#d0ead0)"><div class="pj-em">🗄️</div></div>
+        <div class="pj-body">
+          <div class="pj-tags"><span class="pt">SQL</span><span class="pt">UML</span><span class="pt">Merise</span><span class="pt">Université</span></div>
+          <h3><span class="il on" data-l="fr">Systèmes de gestion</span><span class="il" data-l="en">Management Systems</span><span class="il" data-l="ar">أنظمة الإدارة</span></h3>
+          <p><span class="il on" data-l="fr">Conception et modélisation de bases de données relationnelles, diagrammes UML, modèles Merise — réalisés dans le cadre de la Licence Informatique à l'USTO-MB.</span><span class="il" data-l="en">Relational database design, UML diagrams, Merise models — completed during Computer Science degree at USTO-MB.</span><span class="il" data-l="ar">تصميم قواعد البيانات العلائقية ومخططات UML ونماذج Merise — منجزة في إطار درجة علوم الحاسوب بجامعة USTO-MB.</span></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── SERVICES FREELANCE ── -->
+<section id="services" class="sep">
+  <div class="sw">
+    <div class="ey"><span class="il on" data-l="fr">Ce que je propose</span><span class="il" data-l="en">What I offer</span><span class="il" data-l="ar">ما أقدمه</span></div>
+    <h2 class="st"><span class="il on" data-l="fr">Services freelance</span><span class="il" data-l="en">Freelance services</span><span class="il" data-l="ar">خدمات مستقلة</span></h2>
+    <div class="srv-grid">
+      <div class="srv">
+        <span class="srv-em">🌐</span>
+        <h3><span class="il on" data-l="fr">Site web</span><span class="il" data-l="en">Website</span><span class="il" data-l="ar">موقع ويب</span></h3>
+        <p><span class="il on" data-l="fr">Création de sites web modernes, responsives et personnalisés pour entreprises ou particuliers.</span><span class="il" data-l="en">Modern, responsive and custom websites for businesses or individuals.</span><span class="il" data-l="ar">إنشاء مواقع ويب حديثة ومتجاوبة ومخصصة للشركات أو الأفراد.</span></p>
+        <span class="srv-price"><span class="il on" data-l="fr">À partir de 5 000 DA</span><span class="il" data-l="en">From 5,000 DZD</span><span class="il" data-l="ar">ابتداءً من 5000 دج</span></span>
+      </div>
+      <div class="srv">
+        <span class="srv-em">📱</span>
+        <h3><span class="il on" data-l="fr">Application mobile</span><span class="il" data-l="en">Mobile app</span><span class="il" data-l="ar">تطبيق موبايل</span></h3>
+        <p><span class="il on" data-l="fr">Développement d'applications Android avec Flutter et Firebase, livrées en APK prêt à publier.</span><span class="il" data-l="en">Android app development with Flutter & Firebase, delivered as ready-to-publish APK.</span><span class="il" data-l="ar">تطوير تطبيقات Android بـ Flutter وFirebase، مسلّمة كـ APK جاهز للنشر.</span></p>
+        <span class="srv-price"><span class="il on" data-l="fr">À partir de 15 000 DA</span><span class="il" data-l="en">From 15,000 DZD</span><span class="il" data-l="ar">ابتداءً من 15000 دج</span></span>
+      </div>
+      <div class="srv">
+        <span class="srv-em">🎨</span>
+        <h3><span class="il on" data-l="fr">Logo & identité visuelle</span><span class="il" data-l="en">Logo & visual identity</span><span class="il" data-l="ar">شعار وهوية بصرية</span></h3>
+        <p><span class="il on" data-l="fr">Création de logos professionnels, chartes graphiques et supports marketing avec Photoshop.</span><span class="il" data-l="en">Professional logos, brand guidelines and marketing materials with Photoshop.</span><span class="il" data-l="ar">تصميم شعارات احترافية وأدلة علامة تجارية ومواد تسويقية بـ Photoshop.</span></p>
+        <span class="srv-price"><span class="il on" data-l="fr">À partir de 2 000 DA</span><span class="il" data-l="en">From 2,000 DZD</span><span class="il" data-l="ar">ابتداءً من 2000 دج</span></span>
+      </div>
+      <div class="srv">
+        <span class="srv-em">🎬</span>
+        <h3><span class="il on" data-l="fr">Montage vidéo</span><span class="il" data-l="en">Video editing</span><span class="il" data-l="ar">مونتاج فيديو</span></h3>
+        <p><span class="il on" data-l="fr">Montage de vidéos publicitaires, Reels Instagram, YouTube — avec musique, sous-titres et effets.</span><span class="il" data-l="en">Editing of ads, Instagram Reels, YouTube videos — with music, subtitles and effects.</span><span class="il" data-l="ar">مونتاج فيديوهات إعلانية وريلز وYouTube مع موسيقى وترجمة وتأثيرات.</span></p>
+        <span class="srv-price"><span class="il on" data-l="fr">À partir de 3 000 DA</span><span class="il" data-l="en">From 3,000 DZD</span><span class="il" data-l="ar">ابتداءً من 3000 دج</span></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── ABOUT ── -->
+<section id="about" class="sep">
+  <div class="sw">
+    <div class="ey"><span class="il on" data-l="fr">Qui suis-je</span><span class="il" data-l="en">Who I am</span><span class="il" data-l="ar">من أنا</span></div>
+    <h2 class="st"><span class="il on" data-l="fr">À propos de moi</span><span class="il" data-l="en">About me</span><span class="il" data-l="ar">عني</span></h2>
+    <div class="ab-grid">
+      <div>
+        <p data-lang="fr" class="on">Née le <span class="hl">23 août 2003 à Oran</span>, je suis diplômée en <span class="hl">Licence Informatique</span> — Ingénierie des Systèmes d'Information et de Logiciels à l'<span class="hl">USTO-MB d'Oran</span> (2026).</p>
+        <p data-lang="fr" class="on">Passionnée par le développement d'applications et le design, je travaille sur <span class="hl">SouqDZ</span>, une marketplace 100% algérienne avec paiement et livraison locaux. Mon site <span class="hl">PsyConnect</span> est déjà en ligne.</p>
+        <p data-lang="fr" class="on">Je crois au potentiel numérique de l'Algérie. Je suis disponible pour des missions <span class="hl">freelance</span>, des stages ou un poste dans une entreprise à Oran ou en remote.</p>
+        <p data-lang="en">Born on <span class="hl">August 23, 2003 in Oran</span>, I hold a <span class="hl">Bachelor's in Computer Science</span> from <span class="hl">USTO-MB, Oran</span> (2026). Passionate about development and design, I'm building <span class="hl">SouqDZ</span> and already have <span class="hl">PsyConnect</span> live online.</p>
+        <p data-lang="en">Available for <span class="hl">freelance</span> missions, internships or employment in Oran or remotely. I believe in Algeria's digital potential.</p>
+        <p data-lang="ar" style="direction:rtl;text-align:right">ولدت في <span class="hl">23 أغسطس 2003 في وهران</span>، أنا حاملة <span class="hl">شهادة ليسانس في علوم الحاسوب</span> من <span class="hl">جامعة USTO-MB وهران</span> (2024).</p>
+        <p data-lang="ar" style="direction:rtl;text-align:right">شغوفة بتطوير التطبيقات والتصميم، أعمل على <span class="hl">SouqDZ</span> منصة جزائرية 100٪، وموقعي <span class="hl">PsyConnect</span> منشور بالفعل. متاحة للعمل <span class="hl">الحر</span> أو التوظيف.</p>
+      </div>
+      <div class="info-list">
+        <div class="ii"><div class="ii-ic">👩</div><div><div class="ii-lb"><span class="il on" data-l="fr">Nom complet</span><span class="il" data-l="en">Full name</span><span class="il" data-l="ar">الاسم الكامل</span></div><div class="ii-vl">Chachoua Razika</div></div></div>
+        <div class="ii"><div class="ii-ic">🎂</div><div><div class="ii-lb"><span class="il on" data-l="fr">Date de naissance</span><span class="il" data-l="en">Date of birth</span><span class="il" data-l="ar">تاريخ الميلاد</span></div><div class="ii-vl">23 / 08 / 2003 — Oran</div></div></div>
+        <div class="ii"><div class="ii-ic">📍</div><div><div class="ii-lb">Adresse</div><div class="ii-vl">Cité Algérienne B "A" N/20, Savignon, Oran</div></div></div>
+        <div class="ii"><div class="ii-ic">🎓</div><div><div class="ii-lb">Formation</div><div class="ii-vl">Licence Informatique · USTO-MB 2026</div></div></div>
+        <div class="ii"><div class="ii-ic">🌐</div><div><div class="ii-lb">Site web</div><div class="ii-vl"><a href="http://psyconnect.lovestoblog.com" target="_blank" style="color:var(--rose);text-decoration:none">psyconnect.lovestoblog.com</a></div></div></div>
+        <div class="ii"><div class="ii-ic">📧</div><div><div class="ii-lb">Email</div><div class="ii-vl">chachoua2003@gmail.com</div></div></div>
+        <div class="ii"><div class="ii-ic">📞</div><div><div class="ii-lb">Téléphone</div><div class="ii-vl">0659 905 571</div></div></div>
+        <div class="ii"><div class="ii-ic">✨</div><div><div class="ii-lb">Status</div><div class="ii-vl" style="color:var(--rose)"><span class="il on" data-l="fr">Disponible — Freelance & Emploi</span><span class="il" data-l="en">Available — Freelance & Employment</span><span class="il" data-l="ar">متاحة — عمل حر وتوظيف</span></div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CONTACT ── -->
+<section id="contact" class="sep">
+  <div class="sw">
+    <div class="ct-box">
+      <div class="ct-deco">🌸</div>
+      <h2><span class="il on" data-l="fr">Travaillons <em>ensemble</em> 🚀</span><span class="il" data-l="en">Let's work <em>together</em> 🚀</span><span class="il" data-l="ar">لنعمل <em>معاً</em> 🚀</span></h2>
+      <p class="ct-sub">
+        <span class="il on" data-l="fr">CDI, Freelance, Stage ou Contrat court-terme — je suis prête à rejoindre votre équipe. Réponse rapide garantie.</span>
+        <span class="il"    data-l="en">Full-time, Freelance, Internship or Short-term — ready to join your team. Quick response guaranteed.</span>
+        <span class="il"    data-l="ar">عقد دائم أو عمل حر أو تدريب — جاهزة للانضمام إلى فريقك. استجابة سريعة مضمونة.</span>
+      </p>
+      <div class="ct-links">
+        <a href="mailto:chachoua2003@gmail.com" class="cl">✉️ chachoua2003@gmail.com</a>
+        <a href="tel:0659905571" class="cl">📞 0659 905 571</a>
+        <a href="http://psyconnect.lovestoblog.com" target="_blank" class="cl">🌐 PsyConnect</a>
+        <a href="javascript:downloadCV()" class="cl" style="background:var(--rose);border-color:var(--rose);color:white">📄 <span class="il on" data-l="fr">Mon CV</span><span class="il" data-l="en">My CV</span><span class="il" data-l="ar">سيرتي</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 <em>Razika Chachoua</em> — <span style="color:var(--rose);font-weight:500">Oran, Algérie</span> • <span style="color:var(--rose);font-weight:500">Développeuse Web & Mobile</span> • <span style="color:var(--rose);font-weight:500">Designer Graphique</span> 🌸</p>
+  <p style="margin-top:.8rem;font-size:.7rem;color:var(--ink3)"><span class="il on" data-l="fr">💼 Ouvert aux opportunités • 📧 Réponse rapide garantie</span><span class="il" data-l="en">💼 Open to opportunities • 📧 Quick response guaranteed</span><span class="il" data-l="ar">💼 منفتحة على الفرص • 📧 استجابة سريعة مضمونة</span></p>
+</footer>
+
+<script>
+// CV Download Function
+function downloadCV(){
+  const cvData = {
+    name: "Razika Chachoua",
+    title: "Développeuse Web & Mobile | Designer Graphique",
+    email: "chachoua2003@gmail.com",
+    phone: "0659 905 571",
+    location: "Oran, Algérie"
+  };
+  
+  const cvContent = `
+RAZIKA CHACHOUA
+Développeuse Web & Mobile | Designer Graphique | Créatrice d'Applications
+
+📧 chachoua2003@gmail.com | 📞 0659 905 571
+📍 Cité Algérienne B "A" N/20, Savignon, Oran, Algérie
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+PROFIL PROFESSIONNEL
+Diplômée en Informatique (2026) de l'USTO-MB d'Oran, spécialisée en ingénierie des systèmes d'information et logiciels. 
+Développeuse passionnée créant des expériences numériques modernes : sites web, applications mobiles, identités visuelles.
+Disponible pour CDI, Freelance, Stage ou missions court-terme. Réponse rapide garantie.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+COMPÉTENCES TECHNIQUES
+Développement Web: HTML, CSS, JavaScript, Flutter Web
+Développement Mobile: Flutter, Dart, Firebase, APK
+Bases de Données: SQL, Firebase, UML, Merise, POO
+Programmation: C, Orienté Objet, Algorithmique
+Design Graphique: Photoshop, Logos, Affiches, Identité visuelle
+Montage Vidéo: Clipchamp, Reels Instagram, Publicités
+Bureautique: Word, Excel, PowerPoint
+Support IT: Résolution de problèmes, Maintenance, Dépannage
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+FORMATION
+2021 - 2026: Licence en Informatique
+USTO-MB — Université des Sciences et de la Technologie, Oran
+Spécialité: Ingénierie des Systèmes d'Information et de Logiciels
+Mention obtenue - 2026
+
+2021: Baccalauréat Scientifique
+Oran, Algérie - Filière Sciences
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+PROJETS RÉALISÉS
+✓ PsyConnect - Blog Web (EN LIGNE)
+  Site dédié à la psychologie et au bien-être mental
+  http://psyconnect.lovestoblog.com
+
+✓ SouqDZ - Marketplace Multi-vendeurs (EN COURS)
+  Plateforme e-commerce 100% algérienne avec paiement et livraison locaux
+
+✓ Identités Visuelles
+  Conception de logos, affiches, flyers pour entreprises et particuliers
+
+✓ Systèmes de Gestion
+  Conception et modélisation de bases de données relationnelles, diagrammes UML, modèles Merise
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+SERVICES FREELANCE
+🌐 Site Web: À partir de 5 000 DA
+📱 Application Mobile: À partir de 15 000 DA
+🎨 Logo & Identité Visuelle: À partir de 2 000 DA
+🎬 Montage Vidéo: À partir de 3 000 DA
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+LANGUES
+🇩🇿 Arabe - Langue maternelle
+🇫🇷 Français - Parlé, lu et écrit
+🇬🇧 Anglais - Prononciation & écriture
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+STATUS: DISPONIBLE POUR EMPLOI & FREELANCE
+Portfolio: ${location.href}
+  `.trim();
+  
+  const blob = new Blob([cvContent], {type: 'text/plain;charset=utf-8'});
+  const link = document.createElement('a');
+  link.href = URL.createObjectURL(blob);
+  link.download = 'Razika_Chachoua_CV.txt';
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+}
+
+// ── CANVAS fond pétales & orbes ───
+const cv=document.getElementById('bgc'),cx=cv.getContext('2d');
+let W,H;
+function rsz(){W=cv.width=window.innerWidth;H=cv.height=window.innerHeight}
+rsz();window.addEventListener('resize',()=>{rsz();init()});
+const orbs=[
+  {x:15,y:20,vx:.007,vy:.005,r:380,c:'rgba(196,116,138,',a:.06},
+  {x:82,y:55,vx:-.006,vy:.007,r:300,c:'rgba(232,160,176,',a:.05},
+  {x:45,y:80,vx:.008,vy:-.006,r:340,c:'rgba(155,127,160,',a:.04},
+  {x:5,y:65,vx:.005,vy:.009,r:220,c:'rgba(201,168,108,',a:.03},
+];
+function drawOrbs(){
+  orbs.forEach(o=>{
+    o.x+=o.vx;o.y+=o.vy;
+    if(o.x<0||o.x>100)o.vx*=-1;if(o.y<0||o.y>100)o.vy*=-1;
+    const g=cx.createRadialGradient(o.x/100*W,o.y/100*H,0,o.x/100*W,o.y/100*H,o.r);
+    g.addColorStop(0,o.c+o.a+')');g.addColorStop(1,'transparent');
+    cx.fillStyle=g;cx.fillRect(0,0,W,H);
+  });
+}
+class Petal{
+  constructor(){this.reset(true)}
+  reset(i){this.x=Math.random()*W;this.y=i?Math.random()*H:H+20;this.s=Math.random()*11+5;this.vx=(Math.random()-.5)*.4;this.vy=-(Math.random()*.35+.12);this.rot=Math.random()*Math.PI*2;this.rv=(Math.random()-.5)*.018;this.a=Math.random()*.28+.08;this.h=Math.random()*35+320}
+  upd(){this.x+=this.vx+Math.sin(Date.now()*.0007+this.y*.01)*.28;this.y+=this.vy;this.rot+=this.rv;if(this.y<-20)this.reset(false)}
+  drw(){cx.save();cx.translate(this.x,this.y);cx.rotate(this.rot);cx.globalAlpha=this.a;cx.beginPath();cx.ellipse(0,0,this.s*.45,this.s,0,0,Math.PI*2);cx.fillStyle=`hsl(${this.h},60%,80%)`;cx.fill();cx.restore()}
+}
+class Star{
+  constructor(){this.x=Math.random()*W;this.y=Math.random()*H;this.r=Math.random()*.7+.2;this.a=Math.random()*.3+.08;this.spd=Math.random()*.018+.004;this.ph=Math.random()*Math.PI*2}
+  upd(){this.ph+=this.spd}
+  drw(){const a=this.a*(.5+.5*Math.sin(this.ph));cx.beginPath();cx.arc(this.x,this.y,this.r,0,Math.PI*2);cx.fillStyle=`rgba(196,116,138,${a})`;cx.fill()}
+}
+let petals=[],stars=[];
+function init(){
+  petals=Array.from({length:Math.min(Math.floor(W*H/11000),60)},()=>new Petal());
+  stars=Array.from({length:Math.min(Math.floor(W*H/4500),130)},()=>new Star());
+}
+init();
+function loop(){cx.clearRect(0,0,W,H);drawOrbs();stars.forEach(s=>{s.upd();s.drw()});petals.forEach(p=>{p.upd();p.drw()});requestAnimationFrame(loop)}
+loop();
+
+// Lang
+function setLang(l){
+  document.querySelectorAll('.lb').forEach(b=>b.classList.toggle('on',b.dataset.l===l));
+  document.querySelectorAll('.il').forEach(el=>el.classList.toggle('on',el.dataset.l===l));
+  document.querySelectorAll('[data-lang]').forEach(el=>el.classList.toggle('on',el.dataset.lang===l));
+  document.querySelectorAll('[data-fr]').forEach(el=>{const t=el.getAttribute('data-'+l);if(t)el.textContent=t});
+  document.documentElement.setAttribute('dir',l==='ar'?'rtl':'ltr');
+  document.documentElement.setAttribute('lang',l);
+}
+document.querySelectorAll('.lb').forEach(b=>b.addEventListener('click',()=>setLang(b.dataset.l)));
+
+// Skill bars
+const obs=new IntersectionObserver(en=>{en.forEach(e=>{if(e.isIntersecting)e.target.style.width=e.target.dataset.w+'%'})},{threshold:.3});
+document.querySelectorAll('.sk-fill').forEach(b=>{b.style.width='0';obs.observe(b)});
+
+// Fade
+const fo=new IntersectionObserver(en=>{en.forEach((e,i)=>{if(e.isIntersecting){e.target.style.transitionDelay=(i%4*.08)+'s';e.target.style.opacity='1';e.target.style.transform='translateY(0)'}})},{threshold:.1});
+document.querySelectorAll('.sk,.pj,.ii,.tl-item,.srv,.lg-card').forEach(el=>{el.style.opacity='0';el.style.transform='translateY(16px)';el.style.transition='opacity .5s ease,transform .5s ease';fo.observe(el)});
+</script>
+</body>
+</html>
