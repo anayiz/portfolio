@@ -1,0 +1,75 @@
+:root{
+  --indigo:#2b2a5c;
+  --lilac:#b9b4f0;
+  --mint:#bfe8d8;
+  --blush:#ffd9d0;
+  --bg:#f6f5ff;
+  --paper:#ffffff;
+  --muted:#5d5c85;
+  --line:#e0def5;
+}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth}
+body{font-family:"Outfit",system-ui,sans-serif;background:var(--bg);color:var(--indigo);line-height:1.6;-webkit-font-smoothing:antialiased}
+h1,h2,h3{line-height:1.12;letter-spacing:-.02em;font-weight:600}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+:focus-visible{outline:3px solid var(--indigo);outline-offset:3px}
+
+.top{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:16px clamp(16px,4vw,56px)}
+.brand{display:flex;align-items:center;gap:10px;color:var(--indigo);text-decoration:none;font-weight:700;font-size:1.3rem}
+.top nav{display:flex;gap:22px}
+.top nav a{color:var(--indigo);text-decoration:none;font-weight:500}
+.top nav a:hover{text-decoration:underline;text-underline-offset:5px}
+
+/* check-in = element central */
+.checkin{max-width:1000px;margin:0 auto;padding:clamp(36px,7vw,88px) clamp(16px,4vw,56px) 40px}
+.checkin h1{font-size:clamp(2.4rem,6vw,4.4rem);font-weight:700;max-width:16ch}
+.lead{margin-top:18px;max-width:50ch;font-size:1.12rem;color:var(--muted)}
+.moods{display:flex;flex-wrap:wrap;gap:12px;margin-top:34px}
+.mood{display:flex;align-items:center;gap:12px;background:var(--paper);border:2px solid var(--line);border-radius:20px;padding:12px 20px 12px 14px;font:500 1.05rem "Outfit",sans-serif;color:var(--indigo);cursor:pointer;transition:transform .15s,border-color .15s,background .15s}
+.mood:hover{transform:translateY(-2px);border-color:var(--lilac)}
+.mood[aria-pressed="true"]{background:var(--indigo);border-color:var(--indigo);color:#fff}
+.face{width:36px;height:36px;border-radius:50%;display:grid;place-items:center}
+.face svg{width:22px;height:22px}
+.mood-msg{margin-top:26px;padding:16px 20px;border-radius:16px;background:var(--mint);max-width:60ch;font-size:1.02rem}
+
+/* articles */
+.articles{max-width:1000px;margin:0 auto;padding:24px clamp(16px,4vw,56px) 56px}
+.head{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin-bottom:24px}
+.articles h2{font-size:clamp(1.7rem,3vw,2.3rem)}
+.reset{background:none;border:0;color:var(--indigo);font:500 1rem "Outfit",sans-serif;text-decoration:underline;text-underline-offset:4px;cursor:pointer}
+.list{list-style:none;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:20px}
+.post{background:var(--paper);border-radius:20px;padding:26px;display:flex;flex-direction:column;gap:12px;border:1px solid var(--line)}
+.post:nth-child(3n+1){border-top:8px solid var(--lilac)}
+.post:nth-child(3n+2){border-top:8px solid var(--mint)}
+.post:nth-child(3n){border-top:8px solid var(--blush)}
+.meta{font-size:.9rem;color:var(--muted)}
+.post h3{font-size:1.32rem}
+.post p{font-family:"Source Serif 4",Georgia,serif;font-size:1.04rem;line-height:1.65;color:#3f3e6b}
+.post a{margin-top:auto;color:var(--indigo);font-weight:600;text-underline-offset:4px}
+
+/* breathing */
+.breathe{max-width:1000px;margin:0 auto;padding:24px clamp(16px,4vw,56px) 64px;display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:center}
+.breathe-copy{background:var(--indigo);color:#fff;border-radius:28px;padding:clamp(28px,4vw,48px)}
+.breathe h2{font-size:clamp(1.7rem,3vw,2.3rem);margin-bottom:12px}
+.breathe p{color:#dcdaf7;margin-bottom:24px;max-width:40ch}
+.btn{background:var(--lilac);color:var(--indigo);border:0;border-radius:999px;padding:13px 28px;font:600 1rem "Outfit",sans-serif;cursor:pointer}
+.btn:hover{background:#cbc7f7}
+.orb-wrap{display:grid;place-items:center;min-height:300px}
+.orb{width:150px;height:150px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#ffffff,var(--lilac) 55%,#8f88e0);display:grid;place-items:center;color:var(--indigo);font-weight:600;font-size:1.1rem;transition:transform 4s ease-in-out}
+.orb.inhale{transform:scale(1.7)}
+.orb.hold{transform:scale(1.7)}
+.orb.exhale{transform:scale(1);transition-duration:6s}
+
+.help{max-width:1000px;margin:0 auto;padding:0 clamp(16px,4vw,56px) 64px}
+.help h2{font-size:1.4rem;margin-bottom:8px}
+.help p{max-width:70ch;color:var(--muted)}
+.foot{padding:24px clamp(16px,4vw,56px);color:var(--muted);font-size:.9rem;text-align:center}
+
+@media (max-width:760px){
+  .breathe{grid-template-columns:1fr}
+  .top nav{gap:14px;font-size:.95rem}
+}
+@media (prefers-reduced-motion:reduce){
+  *{transition:none!important;scroll-behavior:auto!important}
+}

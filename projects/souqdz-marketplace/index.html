@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SouqDZ — Le marché 100 % algérien</title>
+  <meta name="description" content="Marketplace algérienne : produits d'artisans et de vendeurs locaux, paiement et livraison en Algérie.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="top">
+    <a class="brand" href="#" aria-label="SouqDZ, accueil">
+      <svg viewBox="0 0 32 32" width="30" height="30" aria-hidden="true">
+        <rect width="32" height="32" rx="8" fill="var(--cobalt)"/>
+        <path d="M16 5l3.2 7.8L27 16l-7.8 3.2L16 27l-3.2-7.8L5 16l7.8-3.2z" fill="var(--saffron)"/>
+      </svg>
+      <span>SouqDZ</span>
+    </a>
+    <form class="search" role="search" id="searchForm">
+      <label class="sr" for="q">Rechercher un produit</label>
+      <input id="q" type="search" placeholder="Rechercher : dattes, tapis, poterie…" autocomplete="off">
+    </form>
+    <button class="cart-btn" id="cartBtn" aria-controls="drawer" aria-expanded="false">
+      Panier <span class="count" id="cartCount">0</span>
+    </button>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-copy">
+        <h1>Achetez algérien. Payez à la livraison.</h1>
+        <p>Des centaines de vendeurs et d'artisans, de Tlemcen à Ghardaïa. Vous recevez votre commande chez vous, vous payez en dinars.</p>
+        <a class="btn" href="#produits">Voir les produits</a>
+      </div>
+
+      <aside class="estimator" aria-labelledby="estTitle">
+        <h2 id="estTitle">Quand est-ce que je reçois ma commande&nbsp;?</h2>
+        <label for="wilaya">Ma wilaya</label>
+        <select id="wilaya"></select>
+        <div class="est-result" aria-live="polite">
+          <div>
+            <span class="est-label">Délai</span>
+            <strong id="estDays">—</strong>
+          </div>
+          <div>
+            <span class="est-label">Livraison</span>
+            <strong id="estFee">—</strong>
+          </div>
+        </div>
+        <p class="est-note" id="estNote"></p>
+      </aside>
+    </section>
+
+    <section class="catalog" id="produits" aria-labelledby="catTitle">
+      <div class="catalog-head">
+        <h2 id="catTitle">Produits du moment</h2>
+        <div class="chips" id="chips" role="group" aria-label="Filtrer par catégorie"></div>
+      </div>
+      <p class="empty" id="empty" hidden>Aucun produit ne correspond. Essayez un autre mot ou une autre catégorie.</p>
+      <ul class="grid" id="grid"></ul>
+    </section>
+
+    <section class="sell">
+      <h2>Vous vendez en Algérie&nbsp;?</h2>
+      <p>Ouvrez votre boutique, ajoutez vos produits et suivez vos commandes depuis un seul tableau de bord.</p>
+      <a class="btn btn-light" href="../souqdz-seller-dashboard/index.html">Ouvrir ma boutique</a>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <p>© 2026 SouqDZ. Projet de démonstration : produits, prix et délais sont fictifs.</p>
+  </footer>
+
+  <aside class="drawer" id="drawer" aria-label="Panier" hidden>
+    <div class="drawer-head">
+      <h2>Mon panier</h2>
+      <button class="close" id="closeCart" aria-label="Fermer le panier">Fermer</button>
+    </div>
+    <ul class="lines" id="lines"></ul>
+    <p class="empty" id="cartEmpty">Votre panier est vide. Ajoutez un produit pour commencer.</p>
+    <div class="drawer-foot">
+      <div class="total"><span>Total</span><strong id="total">0 DA</strong></div>
+      <button class="btn wide" id="order" disabled>Commander, payer à la livraison</button>
+    </div>
+  </aside>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>

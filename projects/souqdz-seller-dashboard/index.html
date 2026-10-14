@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ma boutique — Tableau de bord vendeur SouqDZ</title>
+  <meta name="description" content="Tableau de bord vendeur : ventes, commandes à expédier et suivi des livraisons.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="shell">
+    <aside class="side">
+      <a class="brand" href="../souqdz-marketplace/index.html" aria-label="SouqDZ, retour à la marketplace">
+        <svg viewBox="0 0 32 32" width="28" height="28" aria-hidden="true">
+          <rect width="32" height="32" rx="8" fill="var(--cobalt)"/>
+          <path d="M16 5l3.2 7.8L27 16l-7.8 3.2L16 27l-3.2-7.8L5 16l7.8-3.2z" fill="var(--saffron)"/>
+        </svg>
+        <span>SouqDZ Vendeur</span>
+      </a>
+      <nav aria-label="Navigation du tableau de bord">
+        <a href="#" aria-current="page">Vue d'ensemble</a>
+        <a href="#commandes">Commandes</a>
+        <a href="#">Produits</a>
+        <a href="#">Livraisons</a>
+        <a href="#">Paramètres</a>
+      </nav>
+      <div class="shop">
+        <b>Atelier Tafsut</b>
+        <span>Tizi Ouzou</span>
+      </div>
+    </aside>
+
+    <main class="main">
+      <header class="page-head">
+        <div>
+          <h1>Bonjour, Razika</h1>
+          <p id="subtitle"></p>
+        </div>
+        <button class="btn" id="addProduct">Ajouter un produit</button>
+      </header>
+
+      <section class="kpis" aria-label="Chiffres clés">
+        <div class="kpi"><span>Ventes sur la période</span><strong id="kSales">—</strong><small id="kSalesDelta"></small></div>
+        <div class="kpi"><span>Commandes</span><strong id="kOrders">—</strong><small id="kOrdersDelta"></small></div>
+        <div class="kpi attention"><span>À expédier</span><strong id="kToShip">—</strong><small>Expédiez sous 48 h</small></div>
+        <div class="kpi"><span>Panier moyen</span><strong id="kAvg">—</strong><small>Par commande</small></div>
+      </section>
+
+      <section class="panel chart" aria-labelledby="cTitle">
+        <div class="panel-head">
+          <h2 id="cTitle">Ventes</h2>
+          <div class="seg" id="seg" role="group" aria-label="Période">
+            <button data-p="7" aria-pressed="true">7 jours</button>
+            <button data-p="30" aria-pressed="false">30 jours</button>
+            <button data-p="12" aria-pressed="false">12 mois</button>
+          </div>
+        </div>
+        <div class="chart-box" id="chartBox">
+          <svg id="chartSvg" role="img" aria-labelledby="cTitle chartDesc"></svg>
+          <div class="tip" id="tip" hidden></div>
+          <p class="sr" id="chartDesc"></p>
+        </div>
+      </section>
+
+      <section class="panel" id="commandes" aria-labelledby="oTitle">
+        <div class="panel-head">
+          <h2 id="oTitle">Commandes récentes</h2>
+          <div class="seg" id="filter" role="group" aria-label="Filtrer par statut">
+            <button data-s="Toutes" aria-pressed="true">Toutes</button>
+            <button data-s="Nouvelle" aria-pressed="false">Nouvelles</button>
+            <button data-s="Expédiée" aria-pressed="false">Expédiées</button>
+            <button data-s="Livrée" aria-pressed="false">Livrées</button>
+          </div>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr><th scope="col">Commande</th><th scope="col">Client</th><th scope="col">Wilaya</th><th scope="col" class="num">Montant</th><th scope="col">Statut</th><th scope="col"><span class="sr">Action</span></th></tr>
+            </thead>
+            <tbody id="rows"></tbody>
+          </table>
+        </div>
+        <p class="empty" id="empty" hidden>Aucune commande avec ce statut pour le moment.</p>
+      </section>
+    </main>
+  </div>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="script.js"></script>
+</body>
+</html>
