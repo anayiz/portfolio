@@ -1,0 +1,18 @@
+{
+  "name": "Razika Chachoua — Portfolio",
+  "short_name": "Razika",
+  "description": "Portfolio de Razika Chachoua, développeuse web et mobile et designer graphique à Oran.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f7f5ef",
+  "theme_color": "#f7f5ef",
+  "icons": [
+    {
+      "src": "assets/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
