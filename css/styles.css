@@ -30,6 +30,8 @@ html[data-theme="dark"] {
 * { box-sizing: border-box; }
 html { overflow-x: clip; scroll-behavior: smooth; scroll-padding-top: 88px; }
 body { margin: 0; overflow-x: clip; background: var(--paper); color: var(--ink); font: 16px/1.65 var(--sans); transition: background .2s, color .2s; }
+main, .site-footer { position: relative; z-index: 1; }
+.bubble-canvas { position: fixed; z-index: 0; inset: 0; width: 100%; height: 100%; opacity: .72; pointer-events: none; }
 body, button, input, select, textarea { font-family: var(--sans); }
 ::selection { background: var(--accent); color: #fff; }
 a { color: inherit; }
@@ -292,7 +294,7 @@ h1 { margin-bottom: 14px; font: 600 clamp(48px, 7vw, 86px)/.99 var(--display); l
   .reveal { opacity: 1; transform: none; }
 }
 @media print {
-  .site-header, .reading-progress, .back-to-top, .hero-art, .hero-actions, .profile-assistant, .contact-form { display: none !important; }
+  .bubble-canvas, .site-header, .reading-progress, .back-to-top, .hero-art, .hero-actions, .profile-assistant, .contact-form { display: none !important; }
   body, html { background: #fff !important; color: #111 !important; }
   .section-wrap { width: 100%; }
   .section-pad { padding-block: 28px; }

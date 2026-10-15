@@ -65,6 +65,106 @@ function setTheme(theme) {
   localStorage.setItem("portfolio-theme", next);
 }
 
+const bubbleCanvas = document.querySelector("#bubbleCanvas");
+const bubbleContext = bubbleCanvas.getContext("2d");
+const reducedMotion = matchMedia("(prefers-reduced-motion: reduce)");
+const bubbles = [];
+const pointer = { x: -1000, y: -1000, active: false };
+let canvasWidth = 0;
+let canvasHeight = 0;
+let animationFrame = 0;
+
+function resizeBubbleCanvas() {
+  const pixelRatio = Math.min(devicePixelRatio || 1, 1.5);
+  canvasWidth = innerWidth;
+  canvasHeight = innerHeight;
+  bubbleCanvas.width = Math.round(canvasWidth * pixelRatio);
+  bubbleCanvas.height = Math.round(canvasHeight * pixelRatio);
+  bubbleContext.setTransform(pixelRatio, 0, 0, pixelRatio, 0, 0);
+  const count = canvasWidth < 620 ? 12 : 24;
+  bubbles.length = 0;
+  for (let i = 0; i < count; i += 1) {
+    const radius = 10 + Math.random() * 27;
+    bubbles.push({
+      x: Math.random() * canvasWidth,
+      y: Math.random() * canvasHeight,
+      radius,
+      vx: (Math.random() - 0.5) * 0.32,
+      vy: (Math.random() - 0.5) * 0.32,
+      phase: Math.random() * Math.PI * 2
+    });
+  }
+  drawBubbles(0);
+}
+
+function drawBubbles(time) {
+  const accent = getComputedStyle(html).getPropertyValue("--accent").trim();
+  const rgb = accent.match(/^#([\da-f]{2})([\da-f]{2})([\da-f]{2})$/i);
+  const color = rgb ? `${parseInt(rgb[1], 16)}, ${parseInt(rgb[2], 16)}, ${parseInt(rgb[3], 16)}` : "196, 75, 50";
+  bubbleContext.clearRect(0, 0, canvasWidth, canvasHeight);
+  bubbles.forEach((bubble) => {
+    if (!reducedMotion.matches) {
+      bubble.x += bubble.vx;
+      bubble.y += bubble.vy;
+      bubble.phase += 0.012;
+      if (pointer.active) {
+        const dx = bubble.x - pointer.x;
+        const dy = bubble.y - pointer.y;
+        const distance = Math.hypot(dx, dy);
+        if (distance > 0 && distance < 150) {
+          const force = (1 - distance / 150) * 0.055;
+          bubble.vx += (dx / distance) * force;
+          bubble.vy += (dy / distance) * force;
+        }
+      }
+      bubble.vx = Math.max(-0.7, Math.min(0.7, bubble.vx * 0.995));
+      bubble.vy = Math.max(-0.7, Math.min(0.7, bubble.vy * 0.995));
+      if (bubble.x < -bubble.radius) bubble.x = canvasWidth + bubble.radius;
+      if (bubble.x > canvasWidth + bubble.radius) bubble.x = -bubble.radius;
+      if (bubble.y < -bubble.radius) bubble.y = canvasHeight + bubble.radius;
+      if (bubble.y > canvasHeight + bubble.radius) bubble.y = -bubble.radius;
+    }
+    const float = reducedMotion.matches ? 0 : Math.sin(time / 1100 + bubble.phase) * 2;
+    const gradient = bubbleContext.createRadialGradient(
+      bubble.x - bubble.radius * 0.32, bubble.y - bubble.radius * 0.38, 1,
+      bubble.x, bubble.y + float, bubble.radius
+    );
+    gradient.addColorStop(0, `rgba(${color}, 0.10)`);
+    gradient.addColorStop(0.72, `rgba(${color}, 0.035)`);
+    gradient.addColorStop(1, `rgba(${color}, 0)`);
+    bubbleContext.beginPath();
+    bubbleContext.arc(bubble.x, bubble.y + float, bubble.radius, 0, Math.PI * 2);
+    bubbleContext.fillStyle = gradient;
+    bubbleContext.fill();
+    bubbleContext.strokeStyle = `rgba(${color}, 0.075)`;
+    bubbleContext.lineWidth = 1;
+    bubbleContext.stroke();
+  });
+}
+
+function animateBubbles(time) {
+  drawBubbles(time);
+  if (!reducedMotion.matches && !document.hidden) animationFrame = requestAnimationFrame(animateBubbles);
+}
+
+function startBubbleAnimation() {
+  cancelAnimationFrame(animationFrame);
+  drawBubbles(0);
+  if (!reducedMotion.matches && !document.hidden) animationFrame = requestAnimationFrame(animateBubbles);
+}
+
+resizeBubbleCanvas();
+startBubbleAnimation();
+addEventListener("resize", resizeBubbleCanvas, { passive: true });
+addEventListener("pointermove", (event) => {
+  pointer.x = event.clientX;
+  pointer.y = event.clientY;
+  pointer.active = true;
+}, { passive: true });
+addEventListener("pointerleave", () => { pointer.active = false; }, { passive: true });
+document.addEventListener("visibilitychange", startBubbleAnimation);
+reducedMotion.addEventListener("change", startBubbleAnimation);
+
 languageSelect.addEventListener("change", (event) => setLanguage(event.target.value));
 themeToggle.addEventListener("click", () => setTheme(html.dataset.theme === "dark" ? "light" : "dark"));
 setLanguage(currentLanguage);

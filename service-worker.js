@@ -1,4 +1,4 @@
-const CACHE_NAME = "razika-portfolio-v1";
+const CACHE_NAME = "razika-portfolio-v2";
 const CORE_FILES = [
   "./",
   "./index.html",
